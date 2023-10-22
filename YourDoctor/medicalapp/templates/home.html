@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDICAL DEPARTMENT SUGGESTING SYSTEM</title>
+    <style>
+        body {
+            background-image: url("{% static 'img3.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 120vh;
+        }
+        div{
+            color:white;
+        }
+        h1{
+            color: 'white';
+            font-family: arial, sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 100px;
+        }
+        h2{
+            color: 'white';
+            font-family: arial, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 400px;
+        }
+        input[type=submit]{
+            background-color: #945605;
+            border: 2px;
+            color: white;
+            padding: 16px 32px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5%;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        div h1:hover{
+            color:red;
+        }
+        #kunjappan{
+            width:500px;
+            border-radius: 50%;
+            border: 1px solid red;
+        }
+        #REDCROSS1{
+            width:50px;
+            border-radius: 50%;
+            border: 1px solid red;
+        }
+        .anim{
+            transform: translateY(10px);
+            animation: moveupdown 3s ease-in-out infinite;
+        }
+        .tooltip{
+            position: absolute;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            font-style:bold;            
+            background-color: yellow;
+            right: 150px;
+            top:250px;
+            padding: 2rem;
+            border-radius: 55px;
+            color: red;
+            opacity: 0;
+         
+        }
+        .anim:hover{
+            opacity: 0.5;
+            cursor: pointer;
+        }
+        .container-2:hover .tooltip{
+            opacity: 1;
+        } 
+        @keyframes moveupdown{
+            0%,100%{
+                transform: translateY(30px);
+            }
+            50%{
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+<body>    
+    <div style="text-align: center; color:black; ">
+        <img id="kunjappan" src="{% static 'kunjappan3.png' %}" alt="" class="anim">
+        <div class="container-2">
+            <p style="text-align: center;font-size:20px;color:red;font-weight:800; background:#77C3ED; font-color:yellow; font-style:bold; font-family:arial; padding:1rem; border-radius:1rem; margin-inline:auto; width:400px;">DONT WORRY I WILL HELP YOU </p>
+            <div class="tooltip">IAM Dr. JANGO KUNJAPPAN 2.0</div>
+        </div>
+        <h1 style="background:white; padding:1rem; border-radius:20%;">MEDICAL DEPARTMENT SUGGESTING SYSTEM</h1>
+        
+        <form action="{% url 'predict' %}">
+            <input type="submit" value="LETS START">
+        </form>
+        <img id="REDCROSS1" src="{% static 'REDCROSS2.jpeg' %}" alt="" class="anim1">
+    </div>
+</body>
+</html>

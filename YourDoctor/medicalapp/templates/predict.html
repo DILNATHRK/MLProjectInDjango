@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDICAL DEPARTMENT SUGGESTING SYSTEM</title>
+    <style>
+        body {
+            background-image: url("{% static 'img3.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-size: cover; 
+            height: 1000px;
+        }
+ 
+        .main{
+            position: relative;
+            top: 100px;
+            width: 750px;
+            height: auto;
+            margin:auto;
+            background-color:#00ffff;
+            opacity:95%;
+            border-radius: 10px;
+            align-items: center;
+            padding: 2%;
+            border:5px solid  #0088cc;
+            
+        }
+        h1{
+            color: red;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top:1rem;
+        }
+
+        input[type=submit]{
+            background-color: #a10b18;
+            border: 2px;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5%;
+            font-weight: bold;
+        }
+        a{
+            background-color: #a10b18;
+            border: 2px;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5%;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        td{
+            font-size:1.4rem;
+            font-family:arial;
+
+        }
+        .row{
+            margin-top:1rem;
+        }
+        .r{
+            font-size:2rem;
+            color:black;
+            font-weight:bold;
+            font-family:arial;
+        }
+
+        .mydiv {
+            
+            animation: myanimation 10s infinite;
+          }
+          
+          @keyframes myanimation {
+            0% {background-color: #dae8de;}
+            25%{background-color:yellow;}
+            50%{background-color:green;}
+            75%{background-color:#eb9dfc;}
+            100% {background-color:#fc9da0;}
+          }
+
+    
+    </style>
+</head>
+
+<body>
+    <marquee style="background:white; padding:0.6rem; color:red; font-weight:bolder; font-size: 20px;" >! KINDLY TAKE A PEDIATRICIAN SUPPORT IF YOUR AGE IS LESS THAN 19 AND SYMPTOMS ARE NOT SEVERE
+    </marquee>
+    <div align="center" class="main mydiv">
+        <h1 style= "font-size: 30px;">PLEASE ENTER THE FOLLOWWING INFORMATIONS: </h1>
+        <h2 style= "font-size: 25px;">ENTER 1 FOR YES AND 0 FOR NO</h2>
+        <marquee style="background:white; padding:0.6rem; color:#48137F; font-weight:bolder; font-size: 20px;" >PLEASE USE YOUR CURRENT SYMPTOMS
+        </marquee>
+        <form action="{% url 'result' %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td align="right">stomach_pain_and_acidity: </td>
+                    <td align="left"><input type="text" name="n1" required></td>
+                </tr>
+                <tr>
+                    <td align="right">vomiting: </td>
+                    <td align="left"><input type="text" name="n2" required></td>
+                </tr>
+                <tr>
+                    <td align="right">cough: </td>
+                    <td align="left"><input type="text" name="n3" required></td>
+                </tr>
+                <tr>
+                    <td align="right">fever: </td>
+                    <td align="left"><input type="text" name="n4" required></td>
+                </tr>
+                <tr>
+                    <td align="right">breathlessness: </td>
+                    <td align="left"><input type="text" name="n5" required></td>
+                </tr>
+                <tr>
+                    <td align="right">indigestion: </td>
+                    <td align="left"><input type="text" name="n6" required></td>
+                </tr>
+                <tr>
+                    <td align="right">headache: </td>
+                    <td align="left"><input type="text" name="n7" required></td>
+                </tr>
+                <tr>
+                    <td align="right">abdominal_pain: </td>
+                    <td align="left"><input type="text" name="n8" required></td>
+                </tr>
+                <tr>
+                    <td align="right">diarrhoea: </td>
+                    <td align="left"><input type="text" name="n9" required></td>
+                </tr>
+                <tr>
+                    <td align="right">runny_nose: </td>
+                    <td align="left"><input type="text" name="n10" required></td>
+                </tr>
+                <tr>
+                    <td align="right">chest_pain: </td>
+                    <td align="left"><input type="text" name="n11" required></td>
+                </tr>
+                <tr>
+                    <td align="right">fast_heart_rate: </td>
+                    <td align="left"><input type="text" name="n12" required></td>
+                </tr>
+                <tr>
+                    <td align="right">dizziness: </td>
+                    <td align="left"><input type="text" name="n13" required></td>
+                </tr>
+                <tr>
+                    <td align="right">stiff_neck: </td>
+                    <td align="left"><input type="text" name="n14" required></td>
+                </tr>
+                <tr>
+                    <td align="right">loss_of_balance: </td>
+                    <td align="left"><input type="text" name="n15" required></td>
+                </tr>
+                <tr>
+                    <td align="right">altered_sensorium: </td>
+                    <td align="left"><input type="text" name="n16" required></td>
+                </tr>
+                <tr>
+                    <td align="right">belly_pain: </td>
+                    <td align="left"><input type="text" name="n17" required></td>
+                </tr>
+                <tr>
+                    <td align="right">watering_from_eyes: </td>
+                    <td align="left"><input type="text" name="n18" required></td>
+                </tr>
+
+            </table>
+            <div class="row">
+                <input  type="submit" value="PREDICT">
+                <a href="{% url 'recordData' %}">Show Data</a>
+            </div>
+        </form>
+        <br>
+        <div class="r">Suggested DEPARTMENT: {{result}}</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MEDICAL DEPARTMENT Record Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="background:skyblue; ">     
+    <div class="container">
+        <div class="m-4">
+            <table class="table table-dark table-hover">
+                <a href="{% url 'predict' %}" class="btn btn-secondary">Back to Prediction</a>
+                <h2 style="text-align: center; color:red">MEDICAL DEPARTMENT Show Record Data</h2>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>stomach_pain_and_acidity</th>
+                        <th>vomiting</th>
+                        <th>cough</th>
+                        <th>fever</th>
+                        <th>breathlessness</th>
+                        <th>indigestion</th>
+                        <th>headache</th>
+                        <th>abdominal_pain</th>
+                        <th>diarrhoea</th>
+                        <th>runny_nose</th>
+                        <th>chest_pain</th>
+                        <th>fast_heart_rate</th>
+                        <th>dizziness</th>
+                        <th>stiff_neck</th>
+                        <th>loss_of_balance</th>
+                        <th>altered_sensorium</th>
+                        <th>belly_pain</th>
+                        <th>watering_from_eyes</th>
+                        <th>DEPARTMENT</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% if page_obj %}
+                    {% for p in page_obj %}  
+                    <tr style="text-align: center;">
+                        <td>{{ forloop.counter}}</td>
+                        <td>{{p.stomach_pain_and_acidity}}</td>
+                        <td>{{p.vomiting}}</td>
+                        <td>{{p.cough}}</td>
+                        <td>{{p.fever}}</td>
+                        <td>{{p.breathlessness}}</td>
+                        <td>{{p.indigestion}}</td>
+                        <td>{{p.headache}}</td>
+                        <td>{{p.abdominal_pain}}</td>
+                        <td>{{p.diarrhoea}}</td>
+                        <td>{{p.runny_nose}}</td>
+                        <td>{{p.chest_pain}}</td>
+                        <td>{{p.fast_heart_rate}}</td>
+                        <td>{{p.dizziness}}</td>
+                        <td>{{p.stiff_neck}}</td>
+                        <td>{{p.loss_of_balance}}</td>
+                        <td>{{p.altered_sensorium}}</td>
+                        <td>{{p.belly_pain}}</td>
+                        <td>{{p.watering_from_eyes}}</td>
+                        <td class=" bg-info text-danger " style="text-align: left; font-weight:bold; ">{{p.DEPARTMENT}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                     <br><br>
+                     <h2>You dosen't added any Prediction Data yet.</h2>
+                     <br><br>
+                    {% endif %}
+                </tbody>
+            </table>
+              <ul class="pagination">
+
+                <li>
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}" class="prev">
+                        <i class="pe-7s-angle-left"></i>
+                    </a>
+                     {% endif %}
+                </li>
+
+               {% load l10n %}           
+               {% for page_obj in page_obj.paginator.page_range %}
+                {% if page_obj.number == page_obj  %}
+                    <li><a href="?page={{page_obj }}" class="active" >{{page_obj | localize }}</a></li>&nbsp;&nbsp;
+                {% else %}
+                    <li ><a href="?page={{page_obj}}">{{page_obj }}</a></li> &nbsp;&nbsp;
+                {% endif %}
+                {% endfor %}
+
+
+                <li>
+                     {% if page_obj.has_next %}
+                      <a href="?page={{ page_obj.next_page_number }}" class="next"> <i class="pe-7s-angle-right"></i></a>&nbsp;&nbsp;
+                     {% endif %}
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <img id="kunjappan" src="{% static 'REDCROSS1.png' %}" alt="" class="anim">
+    </div>
+</body>
+
+</html>
