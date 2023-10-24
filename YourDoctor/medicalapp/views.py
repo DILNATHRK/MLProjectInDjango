@@ -8,8 +8,11 @@ from sklearn import metrics
 from sklearn.metrics import accuracy_score
 from .models import DepartmentPredict
 from django.core.paginator import Paginator
+import os
+import sklearn
+import joblib
 
-# Create your views here.
+
 def home(request):
     return render(request, "home.html")
 
@@ -17,9 +20,7 @@ def predict(request):
     return render(request, "predict.html")
 
 def result(request):
-    print("1  ")
-    model = pd.read_pickle(r'D:\RKD_FILES\MINI PROJECT IN MACHINE LEARNING\FINAL\MEDICAL_APP_FINALMODEL.pickle')
-    print("2 ") 
+    model = joblib.load('medical_app_model.joblib')    
     if request.method == "POST":
         n1 = str(request.POST['n1'])
         n2 = str(request.POST['n2'])
@@ -49,7 +50,6 @@ def result(request):
                 result = ""
                 for i in pred:
                     result=i
-        print("result --",pred)
         data = DepartmentPredict(stomach_pain_and_acidity=n1,
                                 vomiting=n2,cough=n3,fever=n4,breathlessness=n5,indigestion=n6,
                                 headache=n7,abdominal_pain=n8,diarrhoea=n9,runny_nose=n10,
