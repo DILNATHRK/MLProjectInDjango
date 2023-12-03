@@ -42,7 +42,6 @@ def result(request):
         n18 = str(request.POST['n18'])
         for i in n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15,n16,n17,n18:
             if n1==n2==n3==n4==n5==n6==n7==n8==n9==n10==n11==n12==n13==n14==n15==n16==n17==n18:
-                print("invalid input")
                 result="invalid input"
             else:
                 pred = model.predict(np.array([n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,
@@ -66,4 +65,3 @@ def recordData(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, "recordData.html",{"page_obj":page_obj, })
-
