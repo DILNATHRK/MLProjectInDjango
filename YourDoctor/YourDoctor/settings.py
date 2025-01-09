@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,8 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$cyd4rt!*l%*ron^nc6-4qthc4l5x1o7evauprfm=^v!rian_q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['16.170.165.83','172.31.7.8','16.16.162.5','0.0.0.0', 'localhost']
+# DEBUG = True
+
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = ['16.170.165.83','172.31.7.8','16.16.162.5','0.0.0.0', 'localhost','127.0.0.1','mlprojectindjango.onrender.com']
 
 
 
@@ -118,9 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+# Correct setup for production deployment
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Points to your `static` directory for development
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

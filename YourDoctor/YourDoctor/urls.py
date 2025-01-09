@@ -9,5 +9,7 @@ urlpatterns = [
     path('', include('medicalapp.urls')),
 ]
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(settings.BASE_DIR, 'static_root')
+
+# Development mode only, ensures static files serve correctly
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
