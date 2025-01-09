@@ -27,8 +27,11 @@ SECRET_KEY = 'django-insecure-$cyd4rt!*l%*ron^nc6-4qthc4l5x1o7evauprfm=^v!rian_q
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = False
+
+# DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['16.170.165.83','172.31.7.8','16.16.162.5','0.0.0.0', 'localhost','127.0.0.1','mlprojectindjango.onrender.com']
+
 
 
 
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',     
 ]
 
 ROOT_URLCONF = 'YourDoctor.urls'
@@ -127,6 +131,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Points to your `static` directory for development
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

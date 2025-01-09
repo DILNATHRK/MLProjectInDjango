@@ -8,6 +8,10 @@ MLProjectInDjango/
 ├── YourDoctor/
 │   ├── medicalapp/
 │   ├── staticfiles/
+│   |    ├── admin/
+│   │    ├── kunjappan3.png
+│   │    ├── REDCROSS2.jpeg
+│   │    └── img3.jpg
 │   └── static/
 │   │   ├── kunjappan3.png
 │   │   ├── REDCROSS2.jpeg
